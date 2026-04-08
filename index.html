@@ -4,117 +4,297 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cuerpo & Mente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Arizonia&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <!-- NAV -->
   <header id="header">
-    <h1 class="titulo-principal">Cuerpo & Mente</h1>
-    <nav id="nav">
-      <a href="#nosotros">Nosotros</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#redes-sociales">Contacto</a>
-      <a href="#ubicación">Ubicación</a>
-    </nav>
+    <div class="header-inner">
+      <h1 class="titulo-principal">Cuerpo & Mente</h1>
+      <nav id="nav">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#redes-sociales">Contacto</a>
+        <a href="#ubicación">Ubicación</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </header>
-  
+
+  <!-- MENÚ MÓVIL -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-bg"></div>
+    <nav class="mobile-nav">
+      <a href="#nosotros"     class="mobile-link">Nosotros</a>
+      <a href="#servicios"    class="mobile-link">Servicios</a>
+      <a href="#redes-sociales" class="mobile-link">Contacto</a>
+      <a href="#ubicación"   class="mobile-link">Ubicación</a>
+      <a href="https://wa.me/5491122467649?" target="_blank" class="mobile-wsp">💬 Reserva tu turno</a>
+    </nav>
+    <p class="mobile-tagline">Tu espacio de bienestar</p>
+  </div>
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <script>
+    const hamburger   = document.getElementById('hamburger');
+    const mobileMenu  = document.getElementById('mobileMenu');
+    const overlay     = document.getElementById('menuOverlay');
+
+    function openMenu() {
+      hamburger.classList.add('open');
+      mobileMenu.classList.add('open');
+      overlay.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      overlay.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.contains('open') ? closeMenu() : openMenu();
+    });
+
+    overlay.addEventListener('click', closeMenu);
+
+    document.querySelectorAll('.mobile-link, .mobile-wsp').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  </script>
+
   <!-- CARRUSEL -->
   <section class="carousel">
+    <div class="carousel-overlay"></div>
     <div class="slides">
-       <div class="carousel-text-overlay">
-      <h2>Bienvenid@ a <br>Cuerpo & Mente</h2>
+      <img src="imagen_carrousel_01.png" alt="Masajes relajantes">
+      <img src="imagen_carrousel_02.png" alt="Tratamientos faciales">
+      <img src="imagen_carrousel_03.png" alt="Extensiones de pestañas">
+      <img src="imagen_carrousel_04.png" alt="Manicura y uñas">
     </div>
-      <img src="imagen_carrousel_01.png" alt="Imagen 1">
-      <img src="imagen_carrousel_02.png" alt="Imagen 2">
-      <img src="imagen_carrousel_03.png" alt="Imagen 3">
-      <img src="imagen_carrousel_04.png" alt="Imagen 4">
+    <div class="carousel-text-overlay">
+      <span class="subtitle-tag">Tu espacio de bienestar</span>
+      <h2>Bienvenid@ a<br><em>Cuerpo & Mente</em></h2>
+      <div class="divider-line"></div>
+      <p>Masoterapia · Estética · Bienestar Integral</p>
+    </div>
+    <div class="carousel-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
     </div>
   </section>
-  <button id="ir_inicio"><a href="#header"><b>Inicio</b></a></button>
-  <div class="carousel-item-container">
-   
+
+  <!-- BTN INICIO FLOTANTE -->
+  <button id="ir_inicio"><a href="#header">↑ Inicio</a></button>
+
+  <!-- SEPARADOR -->
+  <div class="separador-floral">
+    <svg viewBox="0 0 1200 30" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,15 Q150,0 300,15 Q450,30 600,15 Q750,0 900,15 Q1050,30 1200,15" stroke="#d4a0c8" stroke-width="1.5" fill="none"/>
+      <circle cx="600" cy="15" r="4" fill="#d4a0c8"/>
+      <circle cx="300" cy="15" r="3" fill="#d4a0c8" opacity="0.6"/>
+      <circle cx="900" cy="15" r="3" fill="#d4a0c8" opacity="0.6"/>
+    </svg>
   </div>
-  <div class="separador-texto"></div>
-  
+
   <!-- NOSOTROS -->
-  <section id="nosotros" class="section">
-    <button class="titulo-nosotros"><h2>Profesionalismo y Experiencia</h2></button>
-    <br><br>
-    <p>En Cuerpo & Mente estamos capacitados en masoterapia y tratamientos integrales de bienestar.</p>
-    <p>Nuestra especialización, junto con la excelente reputación que nos respalda,</p>
-    <p>refleja el compromiso, la experiencia y la pasión con la que trabajamos día a día.</p>
-    <p>Creemos en un servicio personalizado y de calidad, brindando un espacio de confianza</p>
-    <p>donde cada persona puede relajarse, renovarse y alcanzar un verdadero equilibrio entre cuerpo y mente.</p>
+  <section id="nosotros" class="section nosotros-section">
+    <div class="section-inner">
+      <div class="section-badge">Sobre nosotros</div>
+      <h2 class="section-title">Profesionalismo<br><em>y Experiencia</em></h2>
+      <div class="title-underline"></div>
+      <div class="nosotros-content">
+        <p class="lead-text">En Cuerpo & Mente estamos capacitados en masoterapia y tratamientos integrales de bienestar.</p>
+        <p>Nuestra especialización, junto con la excelente reputación que nos respalda, refleja el compromiso, la experiencia y la pasión con la que trabajamos día a día.</p>
+        <p>Creemos en un servicio personalizado y de calidad, brindando un espacio de confianza donde cada persona puede relajarse, renovarse y alcanzar un verdadero equilibrio entre cuerpo y mente.</p>
+      </div>
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">Personalizado</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">♥</span>
+          <span class="stat-label">Con pasión</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">✓</span>
+          <span class="stat-label">Calidad garantizada</span>
+        </div>
+      </div>
+    </div>
   </section>
-  <div class="separador-texto"></div>
-  <!-- SERVICIOS -->
-  <section id="servicios" class="section gray">
-    <button inert="" class="titulo-servicios"><h2>Nuestros Servicios</h2></button>
-    <br><br>
-    <ul>
-      <h3>Masajes</h3>
-      <li><b>Masajes Relajantes:</b> Ideales para reducir el estrés, mejorar la circulación y aliviar la tensión muscular.
-      </li>
-      <li><b>Masajes Descontracturantes:</b> Perfectos para liberar nudos y contracturas, aliviando el dolor y mejorando
-        la movilidad.</li>
-      <li><b>Masajes Terapéuticos:</b> Diseñados para abordar problemas específicos, como dolores de espalda, ciática o
-        lesiones deportivas.</li>
-      <h3>Estética</h3>
-      <li><b>Depilación:</b> Servicios profesionales para eliminar el vello de forma segura y eficaz.</li>
-      <li><b>Cuidado de la Piel:</b> Tratamientos personalizados para mantener tu piel saludable y radiante.</li>
-      <li><b>Manicura y Pedicura:</b> Cuidado completo de uñas y piel para mantener tus manos y pies en perfecto estado.
-      </li>
-      <h3>Uñas</h3>
-      <li><b>Soft Gel:</b> Uñas semipermanentes con acabado natural y duradero.</li>
-      <li><b>Poly Gel:</b> Uñas semipermanentes con mayor resistencia y brillo.</li>
-      <li><b>Kapping:</b> Técnica de aplicación de uñas semipermanentes con acabado brillante.</li>
-      <li><b>Semipermanente:</b> Uñas que se mantienen durante semanas sin dañar la uña natural.</li>
-      <h3>Servicio de maquillaje</h3>
-      <li><b>Maquillaje:</b> Servicio profesional para eventos sociales y celebraciones.</li>
-    </ul>
-  </section>
-  <div class="separador-texto"><img src="" alt=""></div>
-  <br>
-  <button inert="" id="Donde-estamos" ><h2 >Donde estamos</h2></button>
-  <!-- inert="": INHABILITA FUNCIONES DE BOTÓN -->
-  <section id="ubicación">
-    
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.327948158685!2d-58.437743299999994!3d-34.7473308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccd8c8f23101b%3A0x5a217fd3d6244fbb!2sCuerpo%20%26%20Mente!5e0!3m2!1ses-419!2sar!4v1765828637671!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </section>
-  <br>
-    <p align="center" style="font-size: large;">Dirección:</p>
-    <p align="center">Lisandro de la Torre 2155, B1828GLM Ingeniero Budge, Provincia de Buenos Aires</p>
-  
-  <!-- CONTACTO -->
-   <div id="btn-wsp-container">
-    <button id="btn-wsp"><a class="whatsapp" href="https://wa.me/5491122467649?" target="_blank"><b>Reserva tu
-          turno</b></a></button>
+
+  <!-- SEPARADOR -->
+  <div class="separador-floral">
+    <svg viewBox="0 0 1200 30" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,15 Q150,30 300,15 Q450,0 600,15 Q750,30 900,15 Q1050,0 1200,15" stroke="#d4a0c8" stroke-width="1.5" fill="none"/>
+      <circle cx="600" cy="15" r="4" fill="#d4a0c8"/>
+      <circle cx="300" cy="15" r="3" fill="#d4a0c8" opacity="0.6"/>
+      <circle cx="900" cy="15" r="3" fill="#d4a0c8" opacity="0.6"/>
+    </svg>
   </div>
-  <br>
-  <h2 align="center" style="font-size: large;">Seguinos en redes:</h2>
-  <section id="redes-sociales">
-    
-    <a href="https://www.instagram.com/myriam1808?idsh=NmNwN2xqMDJ5enNY" target="_blank"><img class="logo_instagram" src="logo_instagram.avif"
-        alt="instagram"></a>
-    <a href="https://www.facebook.com/" target="_blank"><img class="logo_facebook" src="logo_facebook_01.png"
-        alt="facebook"></a>
-    <a href="https://www.tiktok.com/" target="_blank"><img class="logo_tiktok" src="logo_tik_tok.png" alt="tik-tok"></a>
-  
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="section servicios-section">
+    <div class="section-inner">
+      <div class="section-badge">Lo que ofrecemos</div>
+      <h2 class="section-title">Nuestros<br><em>Servicios</em></h2>
+      <div class="title-underline"></div>
+
+      <div class="servicios-grid">
+
+        <div class="servicio-card">
+          <div class="card-icon">🌿</div>
+          <h3>Masajes</h3>
+          <ul>
+            <li>
+              <strong>Masajes Relajantes</strong>
+              <p>Reducen el estrés, mejoran la circulación y alivian la tensión muscular.</p>
+            </li>
+            <li>
+              <strong>Masajes Descontracturantes</strong>
+              <p>Liberan nudos y contracturas, aliviando el dolor y mejorando la movilidad.</p>
+            </li>
+            <li>
+              <strong>Masajes Terapéuticos</strong>
+              <p>Para problemas específicos: dolores de espalda, ciática o lesiones deportivas.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="servicio-card">
+          <div class="card-icon">✨</div>
+          <h3>Estética</h3>
+          <ul>
+            <li>
+              <strong>Depilación</strong>
+              <p>Servicios profesionales para eliminar el vello de forma segura y eficaz.</p>
+            </li>
+            <li>
+              <strong>Cuidado de la Piel</strong>
+              <p>Tratamientos personalizados para mantener tu piel saludable y radiante.</p>
+            </li>
+            <li>
+              <strong>Manicura y Pedicura</strong>
+              <p>Cuidado completo de uñas y piel para manos y pies en perfecto estado.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="servicio-card">
+          <div class="card-icon">💅</div>
+          <h3>Uñas</h3>
+          <ul>
+            <li><strong>Soft Gel:</strong> <p>Uñas semipermanentes con acabado natural y duradero.</p></li>
+            <li><strong>Poly Gel:</strong> <p>Mayor resistencia y brillo semipermanente.</p></li>
+            <li><strong>Kapping:</strong> <p>Técnica con acabado brillante semipermanente.</p></li>
+            <li><strong>Semipermanente:</strong> <p>Duran semanas sin dañar la uña natural.</p></li>
+          </ul>
+        </div>
+
+        <div class="servicio-card">
+          <div class="card-icon">🎭</div>
+          <h3>Maquillaje</h3>
+          <ul>
+            <li>
+              <strong>Maquillaje Profesional</strong>
+              <p>Servicio especializado para eventos sociales y celebraciones especiales.</p>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
   </section>
- 
-  <div class="separador-texto"><img src="" alt=""></div>
-  
+
+  <!-- SEPARADOR -->
+  <div class="separador-floral">
+    <svg viewBox="0 0 1200 30" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,15 Q150,0 300,15 Q450,30 600,15 Q750,0 900,15 Q1050,30 1200,15" stroke="#d4a0c8" stroke-width="1.5" fill="none"/>
+      <circle cx="600" cy="15" r="4" fill="#d4a0c8"/>
+    </svg>
+  </div>
+
+  <!-- UBICACIÓN -->
+  <section class="ubicacion-section">
+    <div class="section-inner">
+      <div class="section-badge">Encontranos</div>
+      <h2 class="section-title" id="ubicación">¿Dónde<br><em>estamos?</em></h2>
+      <div class="title-underline"></div>
+
+      <div class="ubicacion-content">
+        <div class="ubicacion-info">
+          <div class="info-item">
+            <span class="info-icon">📍</span>
+            <div>
+              <strong>Dirección</strong>
+              <p>Lisandro de la Torre 2155<br>B1828GLM Ingeniero Budge<br>Provincia de Buenos Aires</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">📱</span>
+            <div>
+              <strong>WhatsApp</strong>
+              <p>+54 9 11 2246-7649</p>
+            </div>
+          </div>
+          <a href="https://wa.me/5491122467649?" target="_blank" class="btn-wsp-inline">
+            <span>💬</span> Reserva tu turno
+          </a>
+        </div>
+        <div class="mapa-wrapper">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.327948158685!2d-58.437743299999994!3d-34.7473308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccd8c8f23101b%3A0x5a217fd3d6244fbb!2sCuerpo%20%26%20Mente!5e0!3m2!1ses-419!2sar!4v1765828637671!5m2!1ses-419!2sar" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REDES SOCIALES -->
+  <section id="redes-sociales" class="redes-section">
+    <div class="section-inner">
+      <p class="redes-titulo">Seguinos en redes</p>
+      <div class="redes-icons">
+        <a href="https://www.instagram.com/myriam1808?idsh=NmNwN2xqMDJ5enNY" target="_blank" class="red-link">
+          <img class="logo_instagram" src="logo_instagram.avif" alt="instagram">
+          <span>Instagram</span>
+        </a>
+        <a href="https://www.facebook.com/" target="_blank" class="red-link">
+          <img class="logo_facebook" src="logo_facebook_01.png" alt="facebook">
+          <span>Facebook</span>
+        </a>
+        <a href="https://www.tiktok.com/" target="_blank" class="red-link">
+          <img class="logo_tiktok" src="logo_tik_tok.png" alt="tik-tok">
+          <span>TikTok</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
-    <p>© 2025 Tweegio <br>-todos los derechos reservados-
-      <br>tweegiodeveloper@gmail.com
-    </p>
+    <div class="footer-inner">
+      <h3 class="footer-brand">Cuerpo & Mente</h3>
+      <div class="footer-divider"></div>
+      <p>© 2025 Tweegio · Todos los derechos reservados</p>
+      <a href="mailto:tweegiodeveloper@gmail.com">tweegiodeveloper@gmail.com</a>
+    </div>
   </footer>
-  
-  </body>
-  
-  </html>
 
-
-
+</body>
+</html>
