@@ -513,10 +513,11 @@ nav a:hover {
 }
 
 .mapa-wrapper {
-  border-radius: var(--radius-lg);
+  border-radius:  var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(212,88,154,0.12);
+  border: 3px solid rgba(251, 0, 255, 0.219);
+  
 }
 
 .mapa-wrapper iframe {
