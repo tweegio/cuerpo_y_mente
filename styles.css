@@ -222,7 +222,6 @@ nav a:hover {
 .dot.active { background: var(--white); width: 22px; border-radius: 4px; }
 
 /* ─── BTN FLOTANTE ────────────────────────────────────── */
-/* ─── BTN FLOTANTE ────────────────────────────────────── */
 #ir_inicio {
   position: fixed;
   bottom: 24px;
@@ -848,7 +847,7 @@ footer a:hover { opacity: 1; }
 }
 
 @media (max-width: 768px) {
-  .hamburger { display: flex; }
+  .hamburger { display: flex; margin-right: 20px; }
   #nav { display: none; }
 
   .header-inner {
